@@ -33,3 +33,9 @@ variable "publisher_email" {
   type        = string
   default     = "group118@example.com"
 }
+
+variable "aks_name" {
+  description = "The name of the AKS cluster"
+  type        = string
+  default     = "grupo118fase3infraaks"
+}

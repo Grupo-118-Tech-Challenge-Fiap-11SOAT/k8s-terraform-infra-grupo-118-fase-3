@@ -8,7 +8,7 @@ provider "kubectl" {
   cluster_ca_certificate = base64decode(module.infra_aks.cluster_ca_certificate)
   client_certificate     = base64decode(module.infra_aks.client_certificate)
   client_key             = base64decode(module.infra_aks.client_key)
-  load_config_file = false
+  load_config_file       = false
 }
 
 # We strongly recommend using the required_providers block to set the

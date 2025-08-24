@@ -69,6 +69,25 @@ module "infra_aks" {
   location            = module.infra_resource_group.location
   resource_group_name = module.infra_resource_group.name
   subnet_id           = module.infra_vnet_subnets.snet-aks-id
+
+  depends_on = [module.infra_vnet_subnets]
+}
+
+resource "kubectl_manifest" "internal_nginx" {
+  yaml_body  = <<YAML
+apiVersion: approuting.kubernetes.azure.com/v1alpha1
+kind: NginxIngressController
+metadata:
+  name: nginx-internal-static
+spec:
+  ingressClassName: nginx-internal-static
+  controllerNamePrefix: nginx-internal-static
+  loadBalancerAnnotations: 
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service.beta.kubernetes.io/azure-load-balancer-ipv4: "10.10.0.10"
+YAML
+  wait       = true
+  depends_on = [module.infra_aks]
 }
 
 #endregion

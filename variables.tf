@@ -15,3 +15,27 @@ variable "acr_name" {
   type        = string
   default     = "grupo118fase3infraacr"
 }
+
+variable "apim_name" {
+  description = "The name of the Azure API Management service instance"
+  type        = string
+  default     = "grupo118fase3infraapim"
+}
+
+variable "nsg_name" {
+  description = "The name of the Network Security Group"
+  type        = string
+  default     = "grupo118fase3infransg"
+}
+
+variable "publisher_email" {
+  description = "The email address of the API Management publisher"
+  type        = string
+  default     = "group118@example.com"
+}
+
+variable "aks_name" {
+  description = "The name of the AKS cluster"
+  type        = string
+  default     = "grupo118fase3infraaks"
+}

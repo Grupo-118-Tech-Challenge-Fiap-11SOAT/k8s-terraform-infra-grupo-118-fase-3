@@ -18,3 +18,8 @@ variable "subnet_id" {
   description = "The ID of the subnet where the AKS cluster will be deployed."
   type        = string
 }
+
+variable "acr_id" {
+  description = "The ID of the Azure Container Registry to grant pull access."
+  type        = string
+}

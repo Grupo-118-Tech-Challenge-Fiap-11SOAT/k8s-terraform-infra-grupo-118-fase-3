@@ -69,6 +69,7 @@ module "infra_aks" {
   location            = module.infra_resource_group.location
   resource_group_name = module.infra_resource_group.name
   subnet_id           = module.infra_vnet_subnets.snet-aks-id
+  acr_id              = module.infra_acr.id
 
   depends_on = [module.infra_vnet_subnets]
 }

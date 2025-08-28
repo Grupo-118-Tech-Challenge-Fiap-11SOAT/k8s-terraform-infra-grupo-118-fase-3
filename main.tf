@@ -34,10 +34,28 @@ output "infra_acr_name" {
 
 }
 
+output "infra_acr_id" {
+  value       = module.infra_acr.id
+  description = "The ID of the Azure Container Registry created by the module"
+
+}
+
 output "infra_acr_login_server" {
   value       = module.infra_acr.login_server
   description = "The login server of the Azure Container Registry created by the module"
 }
+
+output "infra_acr_username" {
+  value       = module.infra_acr.username
+  description = "The admin username of the Azure Container Registry created by the module"
+}
+
+output "infra_acr_password" {
+  value       = module.infra_acr.password
+  description = "The admin password of the Azure Container Registry created by the module"
+  sensitive   = true
+}
+
 #endregion
 
 #region VNET and Subnets

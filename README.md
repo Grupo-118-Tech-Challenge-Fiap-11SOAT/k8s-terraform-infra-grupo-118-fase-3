@@ -5,7 +5,7 @@ Repository to create the Kubernetes infra.
 ## Replace with your actual subscription ID
 
 ```bash
-az ad sp create-for-rbac --name "fase3ServicePrincipalInfra" --role Owner --scopes /subscriptions/5359dabe-cccb-424a-b43f-f1b7ec544dc1
+az ad sp create-for-rbac --name "fase3ServicePrincipalInfra" --role Owner --scopes /subscriptions/<YOUR_SUBSCRIPTION_ID>
 ```
 
 Store the generated value in a safe place.
@@ -65,7 +65,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=4.4.0"
+      version = "=4.41.0"
     }
   }
 }

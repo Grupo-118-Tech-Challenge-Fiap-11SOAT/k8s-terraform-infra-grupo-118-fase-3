@@ -1,6 +1,10 @@
 # Introduction
 Repository to create the Kubernetes infra.
 
+# Install Azure CLI
+
+Install the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?view=azure-cli-latest&pivots=winget) to authenticate with the FIAP Account. This will allow the service principal creation
+
 # Create Service Principal
 ## Replace with your actual subscription ID
 

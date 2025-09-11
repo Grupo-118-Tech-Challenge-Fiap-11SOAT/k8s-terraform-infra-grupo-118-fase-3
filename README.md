@@ -74,14 +74,16 @@ terraform {
   }
 }
 ```
+
 # Azure Kubernetes Cluster Connectivity
-Uma das ideias iniciais era criar o cluster AKS de maneira privada. Desse modo, todo o trafego passaria pelo API Gateway através de um Load Balancer interno.
+One of the initial ideas was to create the AKS cluster in a private manner. This way, all traffic would pass through the API Gateway via an internal Load Balancer.
 
-Consultando a [documentação](https://learn.microsoft.com/en-us/azure/aks/private-clusters?tabs=default-basic-networking%2Cazure-portal) e alguns artigos, identificamos que o acesso ao cluster AKS privado, precisa-se de recursos adicionais como:
+Consulting the [documentation](https://learn.microsoft.com/en-us/azure/aks/private-clusters?tabs=default-basic-networking%2Cazure-portal) and some articles, we identified that accessing the private AKS cluster requires additional resources such as:
+- 
 - Azure Bastion
-- VM na mesma VNET
-- Configurações de VPN
+- VM in the same VNET
+- VPN configurations
 
-Existem outros mecanismos, como utilizar a opção [Run Command](https://learn.microsoft.com/en-us/azure/aks/access-private-cluster?tabs=azure-cli) para invocar os comandos remotamente.
+There are other mechanisms, such as using the [Run Command](https://learn.microsoft.com/en-us/azure/aks/access-private-cluster?tabs=azure-cli) option to invoke commands remotely.
 
-Num cenário corporativo, teriamos uma [VPN](https://learn.microsoft.com/en-us/azure/aks/access-private-cluster?tabs=azure-cli#limitations) para termos os IPs configurados para acesso. Porém em um cenário de estudos, não temos essa facilidade.
+In a corporate scenario, we would have a [VPN](https://learn.microsoft.com/en-us/azure/aks/access-private-cluster?tabs=azure-cli#limitations) to have the IPs configured for access. However, in a study scenario, we don't have this convenience.

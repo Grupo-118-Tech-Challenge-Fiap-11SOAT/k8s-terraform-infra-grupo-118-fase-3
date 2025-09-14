@@ -76,10 +76,10 @@ terraform {
 ```
 
 # Azure Kubernetes Cluster Connectivity
-One of the initial ideas was to create the AKS cluster in a private manner. This way, all traffic would pass through the API Gateway via an internal Load Balancer.
 
+One of the initial ideas was to create the AKS cluster in a private manner. This way, all traffic would pass through the API Gateway via an internal Load Balancer.
 Consulting the [documentation](https://learn.microsoft.com/en-us/azure/aks/private-clusters?tabs=default-basic-networking%2Cazure-portal) and some articles, we identified that accessing the private AKS cluster requires additional resources such as:
-- 
+ 
 - Azure Bastion
 - VM in the same VNET
 - VPN configurations

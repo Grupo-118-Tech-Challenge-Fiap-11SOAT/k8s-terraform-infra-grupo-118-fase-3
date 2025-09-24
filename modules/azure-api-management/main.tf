@@ -168,3 +168,13 @@ resource "azurerm_api_management" "group118fase3infraapim" {
 
   depends_on = [azurerm_subnet_network_security_group_association.nsg-association]
 }
+
+resource "azurerm_api_management_product" "group118fase3infraapimproduct" {
+  product_id            = "${var.apim_name}-product"
+  api_management_name   = azurerm_api_management.group118fase3infraapim.name
+  resource_group_name   = azurerm_resource_group.group118fase3infrarg.name
+  display_name          = "Group 118 Product"
+  subscription_required = true
+  approval_required     = false
+  published             = true
+}

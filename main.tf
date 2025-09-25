@@ -77,6 +77,20 @@ module "infra_apim" {
   publisher_email     = var.publisher_email
 
 }
+
+output "apim_user_password" {
+  value       = module.infra_apim.password
+  description = "The admin password for the Azure API Management user."
+  sensitive   = true
+  
+}
+
+output "apim_user_email" {
+  value       = module.infra_apim.email
+  description = "The email of the Azure API Management user."
+  
+}
+
 #endregion
 
 #region AKS

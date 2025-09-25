@@ -159,11 +159,19 @@ resource "azurerm_api_management" "group118fase3infraapim" {
   publisher_name                = "Group118"
   sku_name                      = "Developer_1"
   virtual_network_type          = "External"
-  publisher_email               = "group118@example.com"
+  publisher_email               = var.publisher_email
   public_network_access_enabled = true
 
   virtual_network_configuration {
     subnet_id = var.subnet_id
+  }
+
+  sign_up {
+    enabled = true
+    terms_of_service {
+      consent_required = false
+      enabled = false
+    }
   }
 
   depends_on = [azurerm_subnet_network_security_group_association.nsg-association]
@@ -172,9 +180,53 @@ resource "azurerm_api_management" "group118fase3infraapim" {
 resource "azurerm_api_management_product" "group118fase3infraapimproduct" {
   product_id            = "${var.apim_name}-product"
   api_management_name   = azurerm_api_management.group118fase3infraapim.name
-  resource_group_name   = azurerm_resource_group.group118fase3infrarg.name
+  resource_group_name   = var.resource_group_name
   display_name          = "Group 118 Product"
+  description           = "Product for Group 118"
   subscription_required = true
   approval_required     = false
   published             = true
+}
+
+// Create a group and associate with the product
+
+resource "azurerm_api_management_group" "group118fase3infraapimgroup" {
+  name                = "${var.apim_name}-developer"
+  resource_group_name = var.resource_group_name
+  api_management_name = azurerm_api_management.group118fase3infraapim.name
+  display_name        = "${var.apim_name}-Group"
+  description         = "This is the ${var.apim_name} management group."
+}
+
+resource "azurerm_api_management_product_group" "group118fase3infraapimgroupassociation" {
+  product_id          = azurerm_api_management_product.group118fase3infraapimproduct.product_id
+  group_name          = azurerm_api_management_group.group118fase3infraapimgroup.name
+  api_management_name = azurerm_api_management.group118fase3infraapim.name
+  resource_group_name = var.resource_group_name
+}
+
+// Create a user for testing purposes and associate with the group
+
+resource "random_password" "apim_user_password" {
+  length           = 16
+  special          = true
+  override_special = "_%@"
+}
+
+resource "azurerm_api_management_user" "group118fase3infraapimuser" {
+  user_id             = "${var.apim_name}-user1"
+  api_management_name = azurerm_api_management.group118fase3infraapim.name
+  resource_group_name = var.resource_group_name
+  first_name          = "Example"
+  last_name           = "User"
+  email               = var.publisher_email
+  state               = "active"
+  password            = random_password.apim_user_password.result
+}
+
+resource "azurerm_api_management_group_user" "group118fase3infraapimusergroupassociation" {
+  user_id             = azurerm_api_management_user.group118fase3infraapimuser.user_id
+  group_name          = azurerm_api_management_group.group118fase3infraapimgroup.name
+  resource_group_name = var.resource_group_name
+  api_management_name = azurerm_api_management.group118fase3infraapim.name
 }

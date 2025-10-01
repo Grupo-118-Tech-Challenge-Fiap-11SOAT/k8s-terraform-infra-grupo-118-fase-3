@@ -219,7 +219,7 @@ resource "azurerm_api_management_user" "group118fase3infraapimuser" {
   resource_group_name = var.resource_group_name
   first_name          = "Example"
   last_name           = "User"
-  email               = var.publisher_email
+  email               = "user1${var.publisher_email}"
   state               = "active"
   password            = random_password.apim_user_password.result
 }

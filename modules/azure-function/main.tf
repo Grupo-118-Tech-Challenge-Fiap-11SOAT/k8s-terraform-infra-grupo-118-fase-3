@@ -28,7 +28,7 @@ resource "azurerm_function_app_flex_consumption" "azurefunction" {
   service_plan_id     = azurerm_service_plan.azurefunctionsp.id
 
   storage_container_type      = "blobContainer"
-  storage_container_endpoint  = "${azurerm_storage_account.azurefunctionsa.primary_blob_endpoint}${azurerm_storage_container.example.name}"
+  storage_container_endpoint  = "${azurerm_storage_account.azurefunctionsa.primary_blob_endpoint}${azurerm_storage_container.azurefunctioncontainer.name}"
   storage_authentication_type = "StorageAccountConnectionString"
   storage_access_key          = azurerm_storage_account.azurefunctionsa.primary_access_key
   runtime_name                = "dotnet-isolated"
@@ -38,5 +38,12 @@ resource "azurerm_function_app_flex_consumption" "azurefunction" {
 
   site_config {}
 
+  app_settings = { 
+    "JwtKey" = "value",
+    "JwtIssuer" = "value",
+    "JwtAudience" = "value",
+    "JwtExpirationMinutes" = "value",
+    "SqlConnectionString" = "value"
+    }
 }
 

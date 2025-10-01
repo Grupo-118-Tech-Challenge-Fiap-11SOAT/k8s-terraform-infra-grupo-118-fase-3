@@ -39,3 +39,15 @@ variable "aks_name" {
   type        = string
   default     = "grupo118fase3infraaks"
 }
+
+variable "function_os_type" {
+  description = "The operating system type for the Azure Function App (e.g., Linux or Windows)"
+  type        = string
+  default     = "Linux"
+}
+
+variable "function_sku_name" {
+  description = "The SKU name for the Azure Function App Service Plan (e.g., Y1 for Consumption, EP1 for Premium)"
+  type        = string
+  default     = "FC1"
+}

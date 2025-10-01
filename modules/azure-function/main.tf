@@ -4,6 +4,7 @@ resource "azurerm_storage_account" "azurefunctionsa" {
   location                 = var.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
+  account_kind             = "Storage"
 }
 
 resource "azurerm_storage_container" "azurefunctioncontainer" {
@@ -33,7 +34,7 @@ resource "azurerm_function_app_flex_consumption" "azurefunction" {
   runtime_name                = "dotnet-isolated"
   runtime_version             = 8.0
   maximum_instance_count      = 50
-  instance_memory_in_mb       = 2048
+  instance_memory_in_mb       = 512
 
   site_config {}
 

@@ -44,14 +44,3 @@ resource "azurerm_role_assignment" "acr-pull" {
   scope                            = var.acr_id
   skip_service_principal_aad_check = true
 }
-
-resource "terraform_data" "aks-get-credentials" {
-  triggers_replace = [
-    azurerm_kubernetes_cluster.group118fase3infraaks.id
-  ]
-
-  provisioner "local-exec" {
-    command = "az aks get-credentials -n ${azurerm_kubernetes_cluster.group118fase3infraaks.name} -g ${azurerm_kubernetes_cluster.group118fase3infraaks.resource_group_name} --overwrite-existing"
-
-  }
-}

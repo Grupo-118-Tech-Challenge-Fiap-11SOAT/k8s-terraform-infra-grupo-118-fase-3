@@ -1,5 +1,5 @@
 # Introduction
-Repository to create the Kubernetes infra.
+Repository to create the Kubernetes infra and additional resources.
 
 # Install Azure CLI
 

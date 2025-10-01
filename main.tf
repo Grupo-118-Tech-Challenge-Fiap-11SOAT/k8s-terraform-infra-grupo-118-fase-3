@@ -137,7 +137,7 @@ module "infra_azure_function" {
 output "azurefunction_hostname" {
   value       = module.infra_azure_function.hostname
   description = "The hostname of the Azure Function App created by the module"
-  
+
 }
 
 output "azurefunction_id" {

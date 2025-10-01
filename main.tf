@@ -124,3 +124,25 @@ YAML
 }
 
 #endregion
+
+#region Azure Function
+module "infra_azure_function" {
+  source              = "./modules/azure-function"
+  resource_group_name = module.infra_resource_group.name
+  location            = module.infra_resource_group.location
+  function_os_type    = var.function_os_type
+  function_sku_name   = var.function_sku_name
+}
+
+output "azurefunction_hostname" {
+  value       = module.infra_azure_function.hostname
+  description = "The hostname of the Azure Function App created by the module"
+
+}
+
+output "azurefunction_id" {
+  value       = module.infra_azure_function.id
+  description = "The ID of the Azure Function App created by the module"
+
+}
+#endregion

@@ -1,5 +1,5 @@
 # Introduction
-Repository to create the Kubernetes infra and additional resources.
+Repository to create the Kubernetes infra and additional resources (like Azure Function and Apim Users).
 
 # Install Azure CLI
 

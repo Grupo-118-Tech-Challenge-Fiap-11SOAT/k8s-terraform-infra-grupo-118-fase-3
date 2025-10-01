@@ -32,7 +32,7 @@ resource "azurerm_function_app_flex_consumption" "azurefunction" {
   storage_authentication_type = "StorageAccountConnectionString"
   storage_access_key          = azurerm_storage_account.azurefunctionsa.primary_access_key
   runtime_name                = "dotnet-isolated"
-  runtime_version             = 8.0
+  runtime_version             = "8.0"
   maximum_instance_count      = 50
   instance_memory_in_mb       = 512
 

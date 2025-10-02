@@ -43,7 +43,8 @@ resource "azurerm_function_app_flex_consumption" "azurefunction" {
     "JwtIssuer" = "value",
     "JwtAudience" = "value",
     "JwtExpirationMinutes" = "value",
-    "SqlConnectionString" = "value"
+    "SqlConnectionString" = "value",
+    "SecurityKey" = "value"
     }
 }
 

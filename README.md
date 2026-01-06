@@ -88,6 +88,8 @@ Consulting the [documentation](https://learn.microsoft.com/en-us/azure/aks/priva
 - VM in the same VNET
 - VPN configurations
 
+# Phase 4
+In the new phase, we're deploying more application inside the Kubernetes cluster and establish the HTTP requests via service name.
 There are other mechanisms, such as using the [Run Command](https://learn.microsoft.com/en-us/azure/aks/access-private-cluster?tabs=azure-cli) option to invoke commands remotely.
 
 In a corporate scenario, we would have a [VPN](https://learn.microsoft.com/en-us/azure/aks/access-private-cluster?tabs=azure-cli#limitations) to have the IPs configured for access. However, in a study scenario, we don't have this convenience.

@@ -47,7 +47,7 @@ variable "function_os_type" {
 }
 
 variable "function_sku_name" {
-  description = "The SKU name for the Azure Function App Service Plan (e.g., Y1 for Consumption, EP1 for Premium)"
+  description = "The SKU name for the Azure Function App Service Plan (e.g., Y1 for Consumption, EP1 for Premium)."
   type        = string
   default     = "FC1"
 }
